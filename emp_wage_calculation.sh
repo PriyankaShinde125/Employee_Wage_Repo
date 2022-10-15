@@ -2,6 +2,7 @@
 
 echo " Welcome to Employee Wage Computation"
 
+declare -a dailyWages
 perHourSalary=20
 fullDayHours=8
 partTimeHours=4
@@ -40,9 +41,11 @@ then
 break
 fi
 perDaySalary=$(($wh*$perHourSalary))
+dailyWages[ $days ]=$perDaySalary
 totalSalary=$(($totalSalary+$perDaySalary))
 ((days++))
 done
 echo "Month earning=" $totalSalary 
 echo "Total days=" $days
 echo "Total hours=" $totalWorkHours
+echo "daily wages= ${dailyWages[@]}"
